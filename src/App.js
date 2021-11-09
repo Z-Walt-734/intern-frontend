@@ -47,6 +47,7 @@ function App() {
             <Route path="/problem-two" component={CodingProblems.ProblemTwo} />
             <Route path="/problem-three" component={CodingProblems.ProblemThree} />
             <Route path="/problem-four" component={CodingProblems.ProblemFour} />
+            <Route path="/problem-five" component={CodingProblems.ProblemFive} />
           </Switch>
 
         </Router >

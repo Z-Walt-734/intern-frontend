@@ -20,26 +20,78 @@ export function ProblemFour() {
         setIsSubmitted(true);
         console.log(stringHash(answer));
 
-        if (answer && (stringHash(answer) == 4093707583 || stringHash(answer) == 532789141)) {
+        if (answer && (stringHash(answer) == 1477832602 || stringHash(answer) == 3778321200)) {
             setIsCorrect(true);
         }
     }
     return (
         <>
-            <h1>Problem Three</h1>
+            <h1>Problem Four</h1>
             <br />
-            <p>This problem will only have a Case #1 and Case #2 output</p>
-            <p>With Halloween come and gone the only thing left of the spooky holiday is the candy collected. And of course being an avid software engineer and numbers nerd, you jumped at the oppurtunity to make this as complex of a math problem as possible</p>
-            <p>You have divided all your candy by type into 200 seperate buckets and made a list of how many pieces are in each one (your input list). As this year is such a good haul (compared to last year) you have decided to "stick it to <code>2020</code>" one last time by testing combinations of candy amounts and math operations.</p>
-            <p>Your goal is to test if a combination of any two buckets and a combination of any three buckets can sum together to get <code>2020</code>. If this is possible, you will return the product of those two numbers (as Case # 1) and the product of those three numbers (as Case #2). Else, return -1 </p>
+            <h3>Problem</h3>
 
-            <b>Example</b>
-            <p>In this list, the two entries that sum to <code>2020</code> are <code>1721</code> and <code>299</code>. Multiplying them together produces <code>1721 * 299 = 514579</code>, so the correct answer is <code><em>514579</em></code>. The three entries that sum to <code>2020</code> are <code>979</code>, <code>366</code>, and <code>675</code>. Multiplying them together produces the answer, <code><em>241861950</em></code>.</p>
+            <p>
+                Reversort is an algorithm to sort a list of distinct integers in increasing order.
+                The algorithm is based on the "Reverse" operation. Each application of this
+                operation reverses the order of some contiguous part of the list.
+            </p>
+            <p>
+                The pseudocode of the algorithm is the following:
+            </p>
+            <pre>Reversort(L):<br />
+                &nbsp;&nbsp;for i := 1 to length(L) - 1<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;j := position with the minimum value in L between i and length(L), inclusive<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;Reverse(L[i..j])
+            </pre>
+            <p>
+                After i−1 iterations, the positions 1,2,…,i−1 of the list contain the i−1 smallest elements of L, in increasing order. During the i-th iteration, the process reverses the sublist going from the i-th position to the current position of the i-th minimum element. That makes the i-th minimum element end up in the i-th position.
+            </p>
+            <p>
+                For example, for a list with 4 elements, the algorithm would perform 3 iterations. Here is how it would process L=[4,2,1,3]:
+            </p>
+            <div>
+                <pre>
+                    1)&emsp;i=1, j=3⟶L=[1,2,4,3] <br />
+                    2)&emsp;i=2, j=2⟶L=[1,2,4,3] <br />
+                    3)&emsp;i=3, j=4⟶L=[1,2,3,4] <br />
+                </pre>
+            </div>
+            <p>
+                The most expensive part of executing the algorithm on our architecture is the Reverse operation. Therefore, our measure for the cost of each iteration is simply the length of the sublist passed to Reverse, that is, the value j−i+1. The cost of the whole algorithm is the sum of the costs of each iteration.
+            </p>
+            <p>
+                In the example above, the iterations cost 3, 1, and 2, in that order, for a total of 6.
+            </p>
+            <p>
+                Given the initial list, compute the cost of executing Reversort on it.
+            </p>
 
-            <b>Input</b>
-            <p>The input list will start with N equal to the total number buckets of candy followed by N values of u32 describing the number of pieces of candy in each bucket.</p>
-            <b>Output</b>
-            <p>For the i-th string, print a line containing "Case #i: " followed by the product of the associated buckets of candy.</p>
+
+            <h3>Input</h3>
+            <p>
+                The first line of the input gives the number of test cases, T. T test cases follow. Each test case consists of 2 lines. The first line contains a single integer N, representing the number of elements in the input list. The second line contains N distinct integers L1, L2, ..., LN, representing the elements of the input list L, in order.
+            </p>
+            <h3>Output</h3>
+            <p>
+                For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the total cost of executing Reversort on the list given as input.
+            </p>
+            <div>
+
+                <p>
+                    Sample Case #1 is described in the statement above.
+                </p>
+                <p>
+                    In Sample Case #2, there is a single iteration, in which Reverse is applied to a sublist of
+                    size 1. Therefore, the total cost is 1.
+                </p>
+                <p>
+                    In Sample Case #3, the first iteration reverses the full list, for a cost of 7. After that,
+                    the list is already sorted, but there are 5 more iterations, each of which contributes a cost
+                    of 1.
+                </p>
+            </div>
+
+
 
             <Table bordered striped>
                 <tbody>
@@ -52,20 +104,21 @@ export function ProblemFour() {
                     <tr>
                         <td>
                             <p className='coding-input'>
-                                6 <br />
-                                1721<br />
-                                979<br />
-                                366<br />
-                                299<br />
-                                675<br />
-                                1456<br />
+                                3
+                                4 <br />
+                                4 2 1 3<br />
+                                2<br />
+                                1 2<br />
+                                7<br />
+                                7 6 5 4 3 2 1<br />
 
                             </p>
                         </td>
                         <td>
                             <p className='coding-input'>
-                                Case #1: 514579<br />
-                                Case #2: 241861950<br />
+                                Case #1: 6
+                                Case #2: 1 <br />
+                                Case #3: 12 <br />
                             </p>
                         </td>
                     </tr>
@@ -73,7 +126,7 @@ export function ProblemFour() {
             </Table>
 
             <form name='form' onSubmit={handleSubmit}>
-                <a href="/inputs/problem3.html" target="_blank">Input data</a>
+                <a href="/inputs/problem4.html" target="_blank">Input data</a>
                 <div className='form-group'>
                     <label>Answer</label>
                     <textarea
