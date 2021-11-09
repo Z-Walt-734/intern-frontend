@@ -25,5 +25,6 @@ yarn-error.log*
 
 # custom settings
 webpack.config.js
+webpack.config.babel.js
 babel.config.js
 src/helpers/store.js
