@@ -104,7 +104,7 @@ export function ProblemFour() {
                     <tr>
                         <td>
                             <p className='coding-input'>
-                                3
+                                3 <br />
                                 4 <br />
                                 4 2 1 3<br />
                                 2<br />
@@ -116,7 +116,7 @@ export function ProblemFour() {
                         </td>
                         <td>
                             <p className='coding-input'>
-                                Case #1: 6
+                                Case #1: 6 <br />
                                 Case #2: 1 <br />
                                 Case #3: 12 <br />
                             </p>
